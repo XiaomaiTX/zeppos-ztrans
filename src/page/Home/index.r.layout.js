@@ -59,6 +59,7 @@ export const ORIGIN_TEXT_STYLE = {
     y: TEXT_CONTAINER_STYLE.y + px(10),
     w: TEXT_CONTAINER_STYLE.w - px(40),
     h: px(35),
+    text_style: hmUI.text_style.WRAP,
     text_size: px(24),
     color: 0x9E9E9E,
     text: "请输入文本",
@@ -67,8 +68,8 @@ export const DILIVDING_LINE_STYLE = {
     x: TEXT_CONTAINER_STYLE.x + px(20),
     y: TEXT_CONTAINER_STYLE.y + px(60),
     w: px(380),
-    h: px(3),
-    color: 0x999999,
+    h: px(2),
+    color: 0x787878,
 };
 
 export const TARGET_TEXT_STYLE = {
@@ -76,6 +77,7 @@ export const TARGET_TEXT_STYLE = {
     y: TEXT_CONTAINER_STYLE.y + px(77),
     w: TEXT_CONTAINER_STYLE.w - px(40),
     h: px(35),
+    text_style: hmUI.text_style.WRAP,
     text_size: px(24),
     color: 0x0092ed,
     text: "Target",
