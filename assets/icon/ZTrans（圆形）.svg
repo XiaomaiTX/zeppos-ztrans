@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_1" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 192 192">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8 {
+        stroke-width: 0px;
+      }
+
+      .cls-1, .cls-5, .cls-8 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-6 {
+        opacity: .8;
+      }
+
+      .cls-2 {
+        fill: #ebf2ff;
+      }
+
+      .cls-3, .cls-5 {
+        opacity: .6;
+      }
+
+      .cls-3, .cls-6, .cls-7 {
+        fill: #6494ff;
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-4" x="0" y="0" width="192" height="192" rx="96" ry="96"/>
+    </clipPath>
+  </defs>
+  <g class="cls-9">
+    <polygon class="cls-7" points="0 0 0 192 192 0 0 0"/>
+    <polygon class="cls-2" points="0 192 192 192 192 0 0 192"/>
+    <g>
+      <polygon class="cls-8" points="39.87 50.14 50.6 35 92.03 35 81.38 50.14 39.87 50.14"/>
+      <polygon class="cls-1" points="81.38 50.14 68.11 69.31 57.55 84.56 38.36 84.56 62.25 50.14 81.38 50.14"/>
+      <polygon class="cls-5" points="90.23 69.4 80.02 84.56 57.55 84.56 68.11 69.31 90.23 69.4"/>
+    </g>
+    <g>
+      <path class="cls-7" d="M100.49,122.66h10.82v22.61l3.76-4.16,1.79,5.84-8.79,9.2-3.7-4.45c.58-.69.98-1.32,1.21-1.88.23-.56.35-1.24.35-2.05v-19.37h-5.44v-5.73Z"/>
+      <path class="cls-7" d="M114.6,125.95c7.21-1.31,12.97-3.06,17.29-5.23,4.32-2.18,7.67-4.89,10.06-8.13h-22.67v-5.15h28.92v5.15c-1.89,3.05-4.09,5.64-6.59,7.78-2.51,2.14-5.74,4.05-9.69,5.73-3.95,1.68-8.97,3.25-15.07,4.71l-2.26-4.86Z"/>
+      <rect class="cls-7" x="116.8" y="144.17" width="34.99" height="5.15"/>
+      <rect class="cls-3" x="118.48" y="133.99" width="31" height="4.68"/>
+      <path class="cls-3" d="M123.45,109.59c2.08,3.28,4.37,5.92,6.85,7.92,2.49,2,5.44,3.63,8.85,4.89s7.74,2.34,12.98,3.27l-1.97,4.97c-5.51-1.19-10.03-2.5-13.56-3.9-3.53-1.41-6.64-3.2-9.34-5.38-2.7-2.18-5.36-5.1-7.98-8.76l4.16-3.01Z"/>
+      <rect class="cls-7" x="130.86" y="128.9" width="5.73" height="28.8"/>
+      <circle class="cls-6" cx="106.5" cy="113.27" r="4.52"/>
+    </g>
+  </g>
+</svg>

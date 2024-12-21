@@ -1,0 +1,31 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@silver-zepp/easy-storage':
+        specifier: 1.6.7-b
+        version: 1.6.7-b
+    devDependencies:
+      '@zeppos/device-types':
+        specifier: ^3.0.0
+        version: 3.0.0
+
+packages:
+
+  '@silver-zepp/easy-storage@1.6.7-b':
+    resolution: {integrity: sha512-NX4aBXD12pRF0KX2yNTf2ZLuAC5eIwhz3jOXSLCUe2S6Zcibe+fiU6PMjIhGKJEOq/eeVpTJ2W9no6wYM+hrBQ==}
+
+  '@zeppos/device-types@3.0.0':
+    resolution: {integrity: sha512-vFd880TxkAaSO2QmLBFIzS0zUXnwRDXlM4FZTdpOgotKpshokOwSTtzIeysf3TIMFSh/wFdbGkkYrUyRxR9w8Q==}
+
+snapshots:
+
+  '@silver-zepp/easy-storage@1.6.7-b': {}
+
+  '@zeppos/device-types@3.0.0': {}
