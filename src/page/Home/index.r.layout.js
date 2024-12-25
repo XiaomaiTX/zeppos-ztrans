@@ -49,7 +49,7 @@ export const TEXT_CONTAINER_STYLE = {
     x: px(30),
     y: px(160),
     w: px(420),
-    h: px(220),
+    h: px(200),
     radius: px(10),
     color: 0x262626,
 };

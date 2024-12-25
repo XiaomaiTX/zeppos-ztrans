@@ -6,54 +6,37 @@ import zosRouter from "@zos/router";
 import EasyStorage from "@silver-zepp/easy-storage";
 const storage = new EasyStorage();
 
+function initConfig() {
+    console.log("[OpenAI] init config");
+    if (!storage.hasKey("openai_endpoint")) {
+        console.log("[storage] can not find openai_endpoint, set https://api.openai.com/v1");
+        storage.setKey("openai_endpoint", "https://api.openai.com/v1");
+    }
+}
+
 Page({
     state: {
         buttonOffset: 0,
     },
     build() {
+        initConfig()
         const TEST_DATA = {
             adapter: storage.getKey("adapter"),
         };
 
         const settingButtons = [
             {
-                title: "Adapter",
-                description: TEST_DATA.adapter,
+                title: "ENDPOINT",
+                description: storage.getKey("openai_endpoint"),
                 icon: "arrow-down-s-fill.png",
                 action: (value) => {
-                    zosRouter.push({
-                        url: "page/components/radio",
-                        params: JSON.stringify({
-                            title: "Adapter",
-                            storageKey: "adapter",
-                            radio_data: ["Translated", "OpenAI"],
-                        }),
-                    });
                 },
-                value: "adapter",
-            },
-            {
-                title: "Adapter Setting",
-                icon: "arrow-right-double-fill.png",
-                action: () => {
-                    zosRouter.push({
-                        url: "page/Settings/"+storage.getKey("adapter"),
-                    });
-                },
-            },
-            {
-                title: "About",
-                icon: "arrow-right-double-fill.png",
-                action: () => {
-                    zosRouter.push({
-                        url: "page/Settings/adapter",
-                    });
-                },
+                value: "openai_endpoint",
             },
         ];
         const title = hmUI.createWidget(hmUI.widget.TEXT, {
             ...Styles.TITLE_STYLE,
-            text: "Settings",
+            text: "OpenAI",
         });
         const buttonsGroup = hmUI.createWidget(hmUI.widget.GROUP, {
             ...Styles.SETTINGS_CONTAINER_STYLE,
@@ -89,7 +72,7 @@ Page({
                             y:
                                 Styles.SETTINGS_BUTTON_DESCRIPTION_STYLE.y +
                                 this.state.buttonOffset,
-                            text: TEST_DATA[itemData.value],
+                            text: storage.getKey(itemData.value),
                         })
                         .setEnable(false);
                 } else {

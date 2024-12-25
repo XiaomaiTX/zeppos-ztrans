@@ -27,7 +27,11 @@
                     "pages": [
                         "page/index",
                         "page/Home/index",
-                        "page/Settings/index"
+                        "page/Settings/index",
+                        "page/Settings/Translated",
+                        "page/Settings/OpenAI",
+                        "page/components/radio",
+                        "page/components/input"
                     ]
                 },
                 "app-side": {

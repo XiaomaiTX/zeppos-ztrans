@@ -11,6 +11,9 @@ importers:
       '@silver-zepp/easy-storage':
         specifier: 1.6.7-b
         version: 1.6.7-b
+      '@zeppos/zml':
+        specifier: ^0.0.33
+        version: 0.0.33
     devDependencies:
       '@zeppos/device-types':
         specifier: ^3.0.0
@@ -24,8 +27,13 @@ packages:
   '@zeppos/device-types@3.0.0':
     resolution: {integrity: sha512-vFd880TxkAaSO2QmLBFIzS0zUXnwRDXlM4FZTdpOgotKpshokOwSTtzIeysf3TIMFSh/wFdbGkkYrUyRxR9w8Q==}
 
+  '@zeppos/zml@0.0.33':
+    resolution: {integrity: sha512-aM3y2J5FPBo69V+do3q5m+AB/LR7YEi1fr/5yXnLFul+EN9M1HvLGUnL1h09uXKzrhloN7NWrfUBIjtg7gEDlQ==}
+
 snapshots:
 
   '@silver-zepp/easy-storage@1.6.7-b': {}
 
   '@zeppos/device-types@3.0.0': {}
+
+  '@zeppos/zml@0.0.33': {}
