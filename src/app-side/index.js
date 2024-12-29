@@ -32,9 +32,10 @@ AppSideService(
 		},
 
 		onRequest(req, res) {
+			console.log("req=>", req);
 			switch (req.method) {
 				case "CHAT":
-					chat(res, req.params);
+					chat(res);
 					break;
 				default:
 					res("error unknown method");
@@ -53,22 +54,23 @@ AppSideService(
 	})
 );
 
-async function test_chat(res, params) {
-	if (!params.stream) {
-		params.stream = false;
+async function chat(res) {
+	const params = {
+		api_url: "https://nio.cafero.town/api/v1/chat/completions",
+		api_key:
+			"sk-6b9ada8b04aac6d23282f6e19d3350686b21a77e380326cf",
+			body: {
+			model: "gpt-4o-mini",
+			messages: [
+				{
+					role: "user",
+					content: result.data,
+				},
+			],
+			temperature: 0.7,
+		},
 	}
-	switch (params.stream) {
-		case true:
-			break;
-
-		default:
-			break;
-	}
-}
-async function chat(res, params) {
-	if (!params.stream) {
-		params.stream = false;
-	}
+	console.log("params=>", params);
 	switch (params.stream) {
 		case true:
 			// const openai = new OpenAI({
