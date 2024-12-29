@@ -11,14 +11,10 @@ Page({
         buttonOffset: 0,
     },
     build() {
-        const TEST_DATA = {
-            adapter: storage.getKey("adapter"),
-        };
-
         const settingButtons = [
             {
                 title: "Adapter",
-                description: TEST_DATA.adapter,
+                description: storage.getKey("adapter"),
                 icon: "arrow-down-s-fill.png",
                 action: (value) => {
                     zosRouter.push({
@@ -37,7 +33,7 @@ Page({
                 icon: "arrow-right-double-fill.png",
                 action: () => {
                     zosRouter.push({
-                        url: "page/Settings/"+storage.getKey("adapter"),
+                        url: "page/Settings/" + storage.getKey("adapter"),
                     });
                 },
             },
@@ -89,7 +85,7 @@ Page({
                             y:
                                 Styles.SETTINGS_BUTTON_DESCRIPTION_STYLE.y +
                                 this.state.buttonOffset,
-                            text: TEST_DATA[itemData.value],
+                            text: storage.getKey("adapter"),
                         })
                         .setEnable(false);
                 } else {

@@ -31,6 +31,8 @@ Page({
             y: 0,
             w: px(420),
             h: px(80),
+            select_src: 'checkbox-circle-line@1x.png',
+            unselect_src: 'checkbox-blank-circle-line@1x.png',
             check_func: (group, index, checked) => {
                 if (checked) {
                     console.log(this.state.params.radio_data[index]);

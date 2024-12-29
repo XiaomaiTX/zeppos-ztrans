@@ -5,6 +5,7 @@ import * as hmUI from "@zos/ui";
 import * as zosRouter from "@zos/router";
 import * as zosDisplay from "@zos/display";
 import * as zosSensor from "@zos/sensor";
+import * as zosInteraction from "@zos/interaction";
 const time = new zosSensor.Time();
 
 import { BasePage } from "@zeppos/zml/base-page";
@@ -21,19 +22,7 @@ Page(
             textContainerOffset: Styles.TEXT_CONTAINER_STYLE.y,
         },
         onInit() {
-            console.log("[Home] init config");
-            if (!storage.hasKey("originLang")) {
-                console.log("[storage] can not find origin, set en-US");
-                storage.setKey("originLang", "en-US");
-            }
-            if (!storage.hasKey("targetLang")) {
-                console.log("[storage] can not find target, set zh-CN");
-                storage.setKey("targetLang", "zh-CN");
-            }
-            if (!storage.hasKey("adapter")) {
-                console.log("[storage] can not find adapter, set OpenAI");
-                storage.setKey("adapter", "OpenAI");
-            }
+            // set screen brightness
             if (
                 zosDisplay.setPageBrightTime({
                     brightTime: 60000,
@@ -41,8 +30,16 @@ Page(
             ) {
                 console.log("setPageBrightTime success");
             }
+            zosInteraction.onGesture({
+                callback: (event) => {
+                    if (event === zosInteraction.GESTURE_RIGHT) {
+                        zosRouter.exit();
+                        console.log("up");
+                    }
+                    return true;
+                },
+            });
         },
-
         build() {
             // Define UI
             const title = hmUI.createWidget(hmUI.widget.TEXT, {
@@ -117,10 +114,11 @@ Page(
             });
 
             // debug
+            storage.setKey("originText", "你好，世界");
             originText.addEventListener(hmUI.event.CLICK_UP, async () => {
                 console.log("origin click");
                 const originTextProp = hmUI.getTextLayout(
-                    "turn right and go to that side",
+                    storage.getKey("originText"),
                     {
                         text_size: 24,
                         text_width: Styles.TEXT_CONTAINER_STYLE.w - 40,
@@ -144,52 +142,30 @@ Page(
                     Styles.DILIVDING_LINE_STYLE.h + px(10);
                 dilivingLine.setProperty(hmUI.prop.VISIBLE, true);
 
-                const res = await this.getYourData({
-                    api_url: "https://nio.cafero.town/api/v1/chat/completions",
-                    api_key:
-                        "sk-6b9ada8b04aac6d23282f6e19d3350686b21a77e380326cf",
-                    body: {
-                        model: "gpt-4o-mini",
-                        messages: [
-                            {
-                                role: "user",
-                                content: `将以下内容从${storage.getKey(
-                                    "originLang"
-                                )}翻译成${storage.getKey(
-                                    "targetLang"
-                                )}: "turn right and go to that side"`,
-                            },
-                        ],
-                        temperature: 0.7,
-                    },
-                });
-                console.log("receive data");
-                console.log("[chat]: typeof res: ", typeof res);
-                console.log("[chat]: res: ", JSON.stringify(res));
-                const responseContent = JSON.stringify(
-                    res.choices[0].message.content,
-                    null,
-                    2
-                );
+                targetText.setProperty(hmUI.prop.VISIBLE, false);
+
+                var responseContent;
+                switch (storage.getKey("adapter")) {
+                    case "OpenAI":
+                        console.log("[adapter]: OpenAI");
+                        responseContent = await this.OpenAI();
+                    case "Translated":
+                        console.log("[adapter]: Translated");
+                        responseContent = await this.Translated();
+
+                        break;
+
+                    default:
+                        responseContent = "adapter error";
+                        break;
+                }
+
                 console.log("[chat]: responseContent: ", responseContent);
-                // ZMarkdown.createWidget(hmUI.widget.TEXT, {
-                //     ...STYLE.MARKDOWN_TEXT,
-                //     text: responseContent.slice(1, -1).replace(/\\n/g, "\n"),
-                // });
-                const targetTextProp = hmUI.getTextLayout(
-                    // translate({
-                    //     adaper: storage.getKey("adapter"),
-                    //     originalLang: storage.getKey("originLang"),
-                    //     targetLang: storage.getKey("targetLang"),
-                    //     text: "turn right and go to that side",
-                    // })
-                    responseContent,
-                    {
-                        text_size: 24,
-                        text_width: Styles.TEXT_CONTAINER_STYLE.w - 40,
-                        wrapped: 1,
-                    }
-                );
+                const targetTextProp = hmUI.getTextLayout(responseContent, {
+                    text_size: 24,
+                    text_width: Styles.TEXT_CONTAINER_STYLE.w - 40,
+                    wrapped: 1,
+                });
 
                 targetText.setProperty(hmUI.prop.MORE, {
                     y: this.state.textContainerOffset,
@@ -200,30 +176,67 @@ Page(
                 this.state.textContainerOffset = Styles.TEXT_CONTAINER_STYLE.y;
             });
         },
-        async getYourData(params) {
-            console.log("params=>", JSON.stringify(params));
+        async OpenAI() {
+            const api_url = "https://nio.cafero.town/api/v1/chat/completions";
+            const api_key =
+                "sk-6b9ada8b04aac6d23282f6e19d3350686b21a77e380326cf";
+            const body = {
+                model: "gpt-4o-mini",
+                messages: [
+                    {
+                        role: "user",
+                        content: `将以下内容从${storage.getKey(
+                            "originLang"
+                        )}翻译成${storage.getKey(
+                            "targetLang"
+                        )}: ${storage.getKey("originText")}`,
+                    },
+                ],
+                temperature: 0.7,
+            };
             try {
                 const result = await this.httpRequest({
                     method: "POST",
-                    url: params.api_url,
+                    url: api_url,
                     headers: {
                         "Content-Type": "application/json",
-                        Authorization: `Bearer ${params.api_key}`,
+                        Authorization: `Bearer ${api_key}`,
                     },
-                    body: JSON.stringify(params.body),
+                    body: JSON.stringify(body),
                 });
 
                 console.log("result.status", result.status);
-                console.log("result.statusText", result.statusText);
-                console.log("result.headers", result.headers);
-                console.log("result.body", result.body);
+
+                return JSON.stringify(
+                    result.body.choices[0].message.content,
+                    null,
+                    2
+                );
+            } catch (error) {
+                console.error("[OpenAI]:", error);
+                throw error;
+            }
+        },
+        async Translated() {
+            try {
+                const result = await this.httpRequest({
+                    method: "POST",
+                    url: `https://api.mymemory.translated.net/get?q=${storage.getKey(
+                        "originText"
+                    )}&langpair=${storage.getKey(
+                        "originLang"
+                    )}|${storage.getKey("targetLang")}`,
+                });
+
+                console.log("result.status", result.status);
                 console.log("[result]", typeof result);
                 console.log("[result]", JSON.stringify(result));
 
-                // Return result.body to the caller
-                return result.body;
+                return decodeURIComponent(
+                    result.body.responseData.translatedText.replace(/\s+/g, "")
+                );
             } catch (error) {
-                console.error("Error in getYourData:", error);
+                console.error("[Translated]:", error);
                 throw error;
             }
         },
