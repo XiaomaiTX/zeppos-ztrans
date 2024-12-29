@@ -4,15 +4,11 @@ import * as Styles from "zosLoader:./index.[pf].layout.js";
 import * as hmUI from "@zos/ui";
 import * as zosRouter from "@zos/router";
 import * as zosDisplay from "@zos/display";
-import * as zosSensor from "@zos/sensor";
 import * as zosInteraction from "@zos/interaction";
-const time = new zosSensor.Time();
 
 import { BasePage } from "@zeppos/zml/base-page";
 import EasyStorage from "@silver-zepp/easy-storage";
 const storage = new EasyStorage();
-
-import { translate } from "../../utils/adapter/adaper";
 
 const SUPPORT_LANG = ["zh-CN", "en-US", "zh-TW", "ja-JP", "ko-KR"];
 
