@@ -7,11 +7,15 @@ const storage = new EasyStorage();
 import { SettingsPage } from "../../components/settings";
 
 const settingsData = {
-    title: "About",
+    title: getText("about.title"),
     items: [
         {
-            title: "Developer",
+            title: getText("about.author"),
             description: "XiaomaiTX",
+        },
+        {
+            title: getText("about.email"),
+            description: "Me@XiaomaiTX.com",
         },
         {
             title: "GitHub",

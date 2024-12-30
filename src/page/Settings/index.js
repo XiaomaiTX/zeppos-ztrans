@@ -7,10 +7,10 @@ const storage = new EasyStorage();
 import { SettingsPage } from "../../components/settings";
 
 const settingsData = {
-    title: "Settings",
+    title: getText("settings.title"),
     items: [
         {
-            title: "Adapter",
+            title: getText("settings.adapter"),
             description: storage.getKey("adapter"),
             icon: "arrow-down-s-fill.png",
             action: (value) => {
@@ -26,7 +26,7 @@ const settingsData = {
             value: "adapter",
         },
         {
-            title: "Adapter Setting",
+            title: getText("settings.adapter-settings"),
             icon: "arrow-right-double-fill.png",
             action: () => {
                 zosRouter.push({
@@ -35,11 +35,11 @@ const settingsData = {
             },
         },
         {
-            title: "About",
+            title: getText("settings.about"),
             icon: "arrow-right-double-fill.png",
             action: () => {
                 zosRouter.push({
-                    url: "page/Settings/adapter",
+                    url: "page/About/index",
                 });
             },
         },

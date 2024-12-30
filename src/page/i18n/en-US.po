@@ -1,4 +1,37 @@
 
 
-msgid "example"
-msgstr "TEST"
+msgid "settings.title"
+msgstr "Settings"
+
+msgid "settings.adapter"
+msgstr "Adapter"
+
+msgid "settings.adapter-settings"
+msgstr "Adapter Settings"
+
+msgid "settings.about"
+msgstr "About"
+
+msgid "adapter.openai.endpoint"
+msgstr "OpenAI Endpoint"
+
+msgid "adapter.openai.api-key"
+msgstr "API Key"
+
+msgid "adapter.openai.model"
+msgstr "Model"
+
+msgid "adapter.openai.check"
+msgstr "Test it out"
+
+msgid "adapter.translated.nothing-to-do"
+msgstr "Nothing to set up"
+
+msgid "about.title"
+msgstr "About"
+
+msgid "about.author"
+msgstr "Developer"
+
+msgid "about.email"
+msgstr "Mail"

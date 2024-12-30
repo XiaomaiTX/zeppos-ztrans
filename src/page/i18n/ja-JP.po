@@ -1,37 +1,37 @@
 
 
 msgid "settings.title"
-msgstr "設置"
+msgstr "GG"
 
 msgid "settings.adapter"
-msgstr "適配器"
+msgstr "Адаптадор"
 
 msgid "settings.adapter-settings"
-msgstr "適配器設定"
+msgstr "コンフィギュレーションDESアンパスパー"
 
 msgid "settings.about"
-msgstr "關於"
+msgstr "ベルガモ"
 
 msgid "adapter.openai.endpoint"
-msgstr "OpenAI Endpoint"
+msgstr "Punto de conexión OpenAI"
 
 msgid "adapter.openai.api-key"
-msgstr "API Key"
+msgstr "Api Clave"
 
 msgid "adapter.openai.model"
-msgstr "模型"
+msgstr "Modelo"
 
 msgid "adapter.openai.check"
-msgstr "測試一下"
+msgstr "Прубало"
 
 msgid "adapter.translated.nothing-to-do"
-msgstr "沒有需要設定的內容"
+msgstr "nada que configar"
 
 msgid "about.title"
-msgstr "關於"
+msgstr "ベルガモ"
 
 msgid "about.author"
-msgstr "開發者"
+msgstr "ベルガモ"
 
 msgid "about.email"
-msgstr "郵件"
+msgstr "Табла 2."

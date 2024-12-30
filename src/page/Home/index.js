@@ -10,13 +10,84 @@ import { BasePage } from "@zeppos/zml/base-page";
 import EasyStorage from "@silver-zepp/easy-storage";
 const storage = new EasyStorage();
 
-const SUPPORT_LANG = ["zh-CN", "en-US", "zh-TW", "ja-JP", "ko-KR"];
+const SUPPORT_LANG = [
+    "zh-CN",
+    "zh-TW",
+    "en-US",
+    "es-ES",
+    "ru-RU",
+    "ko-KR",
+    "fr-FR",
+    "de-DE",
+    "id-ID",
+    "pl-PL",
+    "it-IT",
+    "ja-JP",
+    "th-TH",
+    "ar-EG",
+    "vi-VN",
+    "pt-PT",
+    "nl-NL",
+    "tr-TR",
+    "uk-UA",
+    "iw-IL",
+    "pt-BR",
+    "ro-RO",
+    "cs-CZ",
+    "el-GR",
+    "sr-RS",
+    "ca-ES",
+    "fi-FI",
+    "nb-NO",
+    "da-DK",
+    "sv-SE",
+    "hu-HU",
+    "ms-MY",
+    "sk-SK",
+    "hi-IN",
+];
+const SUPPORT_LANG_NAME = {
+    "zh-CN": "简体中文",
+    "zh-TW": "繁體中文",
+    "en-US": "English",
+    "es-ES": "Español",
+    "ru-RU": "Русский",
+    "ko-KR": "한국어",
+    "fr-FR": "Français",
+    "de-DE": "Deutsch",
+    "id-ID": "Bahasa Indonesia",
+    "pl-PL": "Polski",
+    "it-IT": "Italiano",
+    "ja-JP": "日本語",
+    "th-TH": "ภาษาไทย",
+    "ar-EG": "العربية",
+    "vi-VN": "Tiếng Việt",
+    "pt-PT": "Português",
+    "nl-NL": "Nederlands",
+    "tr-TR": "Türkçe",
+    "uk-UA": "Українська",
+    "iw-IL": "עברית",
+    "pt-BR": "Português",
+    "ro-RO": "Romenian",
+    "cs-CZ": "Czech",
+    "el-GR": "Ελληνικα",
+    "sr-RS": "Srpski",
+    "ca-ES": "Catalan",
+    "fi-FI": "Suomi",
+    "nb-NO": "Norsk",
+    "da-DK": "Dansk",
+    "sv-SE": "Svenska",
+    "hu-HU": "Magyar",
+    "ms-MY": "Bahasa Melayu",
+    "sk-SK": "Slovensky",
+    "hi-IN": "हिन्दी",
+};
 
 Page(
     BasePage({
         state: {
             textContainerOffset: Styles.TEXT_CONTAINER_STYLE.y,
-            responseContent:"",
+            responseContent: "",
         },
         onInit() {
             // set screen brightness
@@ -46,14 +117,14 @@ Page(
             title.setEnable(false);
             const originButton = hmUI.createWidget(hmUI.widget.BUTTON, {
                 ...Styles.ORIGIN_BUTTON_STYLE,
-                text: storage.getKey("originLang"),
+                text: SUPPORT_LANG_NAME[storage.getKey("originLang")],
             });
             const transArrow = hmUI.createWidget(hmUI.widget.IMG, {
                 ...Styles.TRANS_ARROW_STYLE,
             });
             const targetButton = hmUI.createWidget(hmUI.widget.BUTTON, {
                 ...Styles.TAGET_BUTTON_STYLE,
-                text: storage.getKey("targetLang"),
+                text: SUPPORT_LANG_NAME[storage.getKey("targetLang")],
             });
             const textContainer = hmUI.createWidget(hmUI.widget.FILL_RECT, {
                 ...Styles.TEXT_CONTAINER_STYLE,
@@ -99,8 +170,8 @@ Page(
             transArrow.addEventListener(hmUI.event.CLICK_UP, () => {
                 const originLang = storage.getKey("originLang");
                 const targetLang = storage.getKey("targetLang");
-                originButton.setProperty(hmUI.prop.TEXT, targetLang);
-                targetButton.setProperty(hmUI.prop.TEXT, originLang);
+                originButton.setProperty(hmUI.prop.TEXT, SUPPORT_LANG_NAME[targetLang]);
+                targetButton.setProperty(hmUI.prop.TEXT, SUPPORT_LANG_NAME[originLang]);
                 storage.setKey("originLang", targetLang);
                 storage.setKey("targetLang", originLang);
             });
@@ -110,9 +181,8 @@ Page(
                     url: "page/components/input",
                     params: JSON.stringify({
                         value: "originText",
-                    })
+                    }),
                 });
-
             });
 
             settingsButton.addEventListener(hmUI.event.CLICK_UP, () => {
@@ -120,7 +190,6 @@ Page(
                     url: "page/Settings/index",
                 });
             });
-
 
             // check originText
             if (storage.getKey("originText") != "") {
@@ -149,7 +218,7 @@ Page(
                     Styles.DILIVDING_LINE_STYLE.h + px(10);
                 dilivingLine.setProperty(hmUI.prop.VISIBLE, true);
 
-                targetText.setProperty(hmUI.prop.VISIBLE, false);  
+                targetText.setProperty(hmUI.prop.VISIBLE, false);
 
                 switch (storage.getKey("adapter")) {
                     case "OpenAI":
@@ -166,12 +235,18 @@ Page(
                         break;
                 }
 
-                console.log("[chat]: responseContent: ", this.state.responseContent);
-                const targetTextProp = hmUI.getTextLayout(this.state.responseContent, {
-                    text_size: 24,
-                    text_width: Styles.TEXT_CONTAINER_STYLE.w - 40,
-                    wrapped: 1,
-                });
+                console.log(
+                    "[chat]: responseContent: ",
+                    this.state.responseContent
+                );
+                const targetTextProp = hmUI.getTextLayout(
+                    this.state.responseContent,
+                    {
+                        text_size: 24,
+                        text_width: Styles.TEXT_CONTAINER_STYLE.w - 40,
+                        wrapped: 1,
+                    }
+                );
 
                 targetText.setProperty(hmUI.prop.MORE, {
                     y: this.state.textContainerOffset,
@@ -180,14 +255,11 @@ Page(
                 });
                 targetText.setProperty(hmUI.prop.VISIBLE, true);
                 this.state.textContainerOffset = Styles.TEXT_CONTAINER_STYLE.y;
-
             }
-            
-
         },
         async OpenAI() {
             const api_url = storage.getKey("openai_endpoint");
-            const api_key = storage.getKey("openai_api_key") 
+            const api_key = storage.getKey("openai_api_key");
             const body = {
                 model: "gpt-4o-mini",
                 messages: [

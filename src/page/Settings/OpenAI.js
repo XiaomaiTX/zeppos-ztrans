@@ -11,7 +11,7 @@ const settingsData = {
     title: "OpenAI",
     items: [
         {
-            title: "Endpoint",
+            title: getText("adapter.openai.endpoint"),
             description: storage.getKey("openai_endpoint"),
             icon: "arrow-down-s-fill.png",
             action: (value) => {
@@ -25,7 +25,7 @@ const settingsData = {
             value: "openai_endpoint",
         },
         {
-            title: "API Key",
+            title: getText("adapter.openai.api-key"),
             description: storage.getKey("openai_api_key"),
             icon: "arrow-down-s-fill.png",
             action: (value) => {
@@ -39,7 +39,7 @@ const settingsData = {
             value: "openai_api_key",
         },
         {
-            title: "Model",
+            title: getText("adapter.openai.model"),
             description: storage.getKey("openai_model"),
             icon: "arrow-down-s-fill.png",
             action: (value) => {
@@ -53,7 +53,7 @@ const settingsData = {
             value: "openai_model",
         },
         {
-            title: "Check",
+            title: getText("adapter.openai.check"),
             description: "",
             icon: "arrow-down-s-fill.png",
             action: (value) => {

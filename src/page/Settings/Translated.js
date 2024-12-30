@@ -7,7 +7,7 @@ const settingsData = {
     title: "Translated",
     items: [
         {
-            title: "Nothing to do",
+            title: getText("adapter.translated.nothing-to-do"),
             action: (value) => {},
             value: "",
         },

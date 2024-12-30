@@ -1,11 +1,25 @@
 {
-  "originLang": "zh-CN",
-  "targetLangs": [
-    "en-US",
-    "zh-TW",
-    "ru-RU",
-    "fr-FR"
-  ],
-  "workingPath": "./page/i18n",
-  "adapter": "Translated"
+    "originLang": "zh-CN",
+    "targetLangs": [
+        "ar-EG",
+        "de-DE",
+        "en-US",
+        "es-ES",
+        "id-ID",
+        "it-IT",
+        "ja-JP",
+        "ko-KR",
+        "nl-NL",
+        "pl-PL",
+        "pt-PT",
+        "ru-RU",
+        "th-TH",
+        "tr-TR",
+        "uk-UA",
+        "vi-VN",
+        "zh-TW"
+    ]
+    ,
+    "workingPath": "./page/i18n",
+    "adapter": "Translated"
 }

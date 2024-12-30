@@ -1,37 +1,37 @@
 
 
 msgid "settings.title"
-msgstr "settings"
+msgstr "GG"
 
 msgid "settings.adapter"
 msgstr "Адаптадор"
 
 msgid "settings.adapter-settings"
-msgstr "Configuración del adaptador"
+msgstr "การกำหนดค่า ديس أمبير"
 
 msgid "settings.about"
-msgstr "Acerca de"
+msgstr "แบร์กาโม"
 
 msgid "adapter.openai.endpoint"
 msgstr "Punto de conexión OpenAI"
 
 msgid "adapter.openai.api-key"
-msgstr "Clave API"
+msgstr "Api Clave"
 
 msgid "adapter.openai.model"
-msgstr "Modelo"
+msgstr "موديلو"
 
 msgid "adapter.openai.check"
-msgstr "Пруэбало"
+msgstr "Прубало"
 
 msgid "adapter.translated.nothing-to-do"
-msgstr "No hay nada que configurar"
+msgstr "nada que configurar"
 
 msgid "about.title"
-msgstr "Acerca de"
+msgstr "แบร์กาโม"
 
 msgid "about.author"
-msgstr "Desarrollador"
+msgstr "แบร์กาโม"
 
 msgid "about.email"
 msgstr "Табла 2."
