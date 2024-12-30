@@ -30,8 +30,9 @@
                         "page/Settings/index",
                         "page/Settings/Translated",
                         "page/Settings/OpenAI",
-                        "page/components/radio",
-                        "page/components/input"
+                        "page/About/index",
+                        "components/radio",
+                        "components/input"
                     ]
                 },
                 "app-side": {
