@@ -15,9 +15,9 @@ const settingsData = {
             icon: "arrow-down-s-fill.png",
             action: (value) => {
                 zosRouter.push({
-                    url: "page/components/radio",
+                    url: "components/radio",
                     params: JSON.stringify({
-                        title: "Adapter",
+                        title: getText("settings.adapter"),
                         storageKey: "adapter",
                         radio_data: ["Translated", "OpenAI"],
                     }),

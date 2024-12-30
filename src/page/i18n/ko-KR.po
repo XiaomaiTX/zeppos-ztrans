@@ -35,3 +35,6 @@ msgstr "데사롤라도르"
 
 msgid "about.email"
 msgstr "Табла 2."
+
+msgid "home.origin-text.placeholder"
+msgstr "请输入文本"

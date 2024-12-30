@@ -149,7 +149,7 @@ Page(
             // EventListener
             originButton.addEventListener(hmUI.event.CLICK_UP, () => {
                 zosRouter.push({
-                    url: "page/components/radio",
+                    url: "components/radio",
                     params: JSON.stringify({
                         title: "Origin Lang",
                         storageKey: "originLang",
@@ -159,7 +159,7 @@ Page(
             });
             targetButton.addEventListener(hmUI.event.CLICK_UP, () => {
                 zosRouter.push({
-                    url: "page/components/radio",
+                    url: "components/radio",
                     params: JSON.stringify({
                         title: "Target Lang",
                         storageKey: "targetLang",
@@ -178,7 +178,7 @@ Page(
             originText.addEventListener(hmUI.event.CLICK_UP, async () => {
                 console.log("origin click");
                 zosRouter.push({
-                    url: "page/components/input",
+                    url: "components/input",
                     params: JSON.stringify({
                         value: "originText",
                     }),
@@ -193,6 +193,7 @@ Page(
 
             // check originText
             if (storage.getKey("originText") != "") {
+                console.log("[originText]", storage.getKey("originText"));
                 const originTextProp = hmUI.getTextLayout(
                     storage.getKey("originText"),
                     {
@@ -261,7 +262,7 @@ Page(
             const api_url = storage.getKey("openai_endpoint");
             const api_key = storage.getKey("openai_api_key");
             const body = {
-                model: "gpt-4o-mini",
+                model: storage.getKey("openai_model"),
                 messages: [
                     {
                         role: "user",

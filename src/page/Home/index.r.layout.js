@@ -1,3 +1,4 @@
+import { getText } from "@zos/i18n";
 import { px } from "@zos/utils";
 import * as hmUI from "@zos/ui";
 
@@ -62,7 +63,7 @@ export const ORIGIN_TEXT_STYLE = {
     text_style: hmUI.text_style.WRAP,
     text_size: px(24),
     color: 0x9E9E9E,
-    text: "请输入文本",
+    text: getText("home.origin-text.placeholder"),
 };
 export const DILIVDING_LINE_STYLE = {
     x: TEXT_CONTAINER_STYLE.x + px(20),

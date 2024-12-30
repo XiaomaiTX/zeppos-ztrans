@@ -35,3 +35,6 @@ msgstr "開發者"
 
 msgid "about.email"
 msgstr "郵件"
+
+msgid "home.origin-text.placeholder"
+msgstr "请输入文本"

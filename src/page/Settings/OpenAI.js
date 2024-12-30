@@ -13,10 +13,10 @@ const settingsData = {
         {
             title: getText("adapter.openai.endpoint"),
             description: storage.getKey("openai_endpoint"),
-            icon: "arrow-down-s-fill.png",
+            icon: "edit-2-fill@1x.png",
             action: (value) => {
                 zosRouter.push({
-                    url: "page/components/input",
+                    url: "components/input",
                     params: JSON.stringify({
                         value: "openai_endpoint",
                     })
@@ -27,10 +27,10 @@ const settingsData = {
         {
             title: getText("adapter.openai.api-key"),
             description: storage.getKey("openai_api_key"),
-            icon: "arrow-down-s-fill.png",
+            icon: "edit-2-fill@1x.png",
             action: (value) => {
                 zosRouter.push({
-                    url: "page/components/input",
+                    url: "components/input",
                     params: JSON.stringify({
                         value: "openai_api_key",
                     })
@@ -41,10 +41,10 @@ const settingsData = {
         {
             title: getText("adapter.openai.model"),
             description: storage.getKey("openai_model"),
-            icon: "arrow-down-s-fill.png",
+            icon: "edit-2-fill@1x.png",
             action: (value) => {
                 zosRouter.push({
-                    url: "page/components/input",
+                    url: "components/input",
                     params: JSON.stringify({
                         value: "openai_model",
                     })
@@ -55,7 +55,6 @@ const settingsData = {
         {
             title: getText("adapter.openai.check"),
             description: "",
-            icon: "arrow-down-s-fill.png",
             action: (value) => {
             },
         },

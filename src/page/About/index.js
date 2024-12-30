@@ -11,7 +11,7 @@ const settingsData = {
     items: [
         {
             title: getText("about.author"),
-            description: "XiaomaiTX",
+            description: "@XiaomaiTX",
         },
         {
             title: getText("about.email"),
@@ -19,7 +19,7 @@ const settingsData = {
         },
         {
             title: "GitHub",
-            description: "XiaomaiTX/zeppos-ztrans",
+            description: "@XiaomaiTX/zeppos-ztrans",
         },
     ],
 };

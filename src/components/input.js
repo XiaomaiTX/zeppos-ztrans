@@ -19,11 +19,9 @@ Page({
         hmUI.createKeyboard({
             onComplete: (wgtObj, result) => {
                 storage.setKey(this.state.params.value, result.data);
-                hmUI.deleteKeyboard();
                 zosRouter.back();
             },
             onCancel: (wgtObj, result) => {
-                hmUI.deleteKeyboard();
                 zosRouter.back();
             },
             inputType: hmUI.inputType.CHAR,
