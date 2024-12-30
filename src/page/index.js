@@ -42,6 +42,9 @@ Page({
             console.log("[storage] can not find openai_model, set gpt-3.5-turbo");
             storage.setKey("openai_model", "gpt-3.5-turbo");
         }
+
+        // default value
+        storage.setKey("originText", "");
     
     },
 

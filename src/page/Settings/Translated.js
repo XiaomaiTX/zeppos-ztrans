@@ -1,7 +1,7 @@
 import { getText } from "@zos/i18n";
 import * as hmUI from "@zos/ui";
 
-import { SettingsPage } from "../components/settings";
+import { SettingsPage } from "../../components/settings";
 
 const settingsData = {
     title: "Translated",

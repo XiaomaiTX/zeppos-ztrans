@@ -16,6 +16,7 @@ Page(
     BasePage({
         state: {
             textContainerOffset: Styles.TEXT_CONTAINER_STYLE.y,
+            responseContent:"",
         },
         onInit() {
             // set screen brightness
@@ -36,7 +37,7 @@ Page(
                 },
             });
         },
-        build() {
+        async build() {
             // Define UI
             const title = hmUI.createWidget(hmUI.widget.TEXT, {
                 ...Styles.TITLE_STYLE,
@@ -103,16 +104,26 @@ Page(
                 storage.setKey("originLang", targetLang);
                 storage.setKey("targetLang", originLang);
             });
+            originText.addEventListener(hmUI.event.CLICK_UP, async () => {
+                console.log("origin click");
+                zosRouter.push({
+                    url: "page/components/input",
+                    params: JSON.stringify({
+                        value: "originText",
+                    })
+                });
+
+            });
+
             settingsButton.addEventListener(hmUI.event.CLICK_UP, () => {
                 zosRouter.push({
                     url: "page/Settings/index",
                 });
             });
 
-            // debug
-            storage.setKey("originText", "你好，世界");
-            originText.addEventListener(hmUI.event.CLICK_UP, async () => {
-                console.log("origin click");
+
+            // check originText
+            if (storage.getKey("originText") != "") {
                 const originTextProp = hmUI.getTextLayout(
                     storage.getKey("originText"),
                     {
@@ -138,26 +149,25 @@ Page(
                     Styles.DILIVDING_LINE_STYLE.h + px(10);
                 dilivingLine.setProperty(hmUI.prop.VISIBLE, true);
 
-                targetText.setProperty(hmUI.prop.VISIBLE, false);
+                targetText.setProperty(hmUI.prop.VISIBLE, false);  
 
-                var responseContent;
                 switch (storage.getKey("adapter")) {
                     case "OpenAI":
                         console.log("[adapter]: OpenAI");
-                        responseContent = await this.OpenAI();
+                        this.state.responseContent = await this.OpenAI();
                     case "Translated":
                         console.log("[adapter]: Translated");
-                        responseContent = await this.Translated();
+                        this.state.responseContent = await this.Translated();
 
                         break;
 
                     default:
-                        responseContent = "adapter error";
+                        this.state.responseContent = "adapter error";
                         break;
                 }
 
-                console.log("[chat]: responseContent: ", responseContent);
-                const targetTextProp = hmUI.getTextLayout(responseContent, {
+                console.log("[chat]: responseContent: ", this.state.responseContent);
+                const targetTextProp = hmUI.getTextLayout(this.state.responseContent, {
                     text_size: 24,
                     text_width: Styles.TEXT_CONTAINER_STYLE.w - 40,
                     wrapped: 1,
@@ -170,12 +180,14 @@ Page(
                 });
                 targetText.setProperty(hmUI.prop.VISIBLE, true);
                 this.state.textContainerOffset = Styles.TEXT_CONTAINER_STYLE.y;
-            });
+
+            }
+            
+
         },
         async OpenAI() {
-            const api_url = "https://nio.cafero.town/api/v1/chat/completions";
-            const api_key =
-                "sk-6b9ada8b04aac6d23282f6e19d3350686b21a77e380326cf";
+            const api_url = storage.getKey("openai_endpoint");
+            const api_key = storage.getKey("openai_api_key") 
             const body = {
                 model: "gpt-4o-mini",
                 messages: [
